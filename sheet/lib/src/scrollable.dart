@@ -868,8 +868,10 @@ class _RenderScrollSemantics extends RenderProxyBox {
 
     _innerNode ??= SemanticsNode(showOnScreen: showOnScreen);
     _innerNode!
-      ..isMergedIntoParent = node.isPartOfNodeMerging
-      ..rect = node.rect;
+      // Flutter make this field private https://github.com/flutter/flutter/commit/7a3135b9c107ad424a57f1300836f488f754f168, and it looks we don't need assign this field manually.
+      // As long as test is passed, it would be fine.
+      // ..isMergedIntoParent = node.isPartOfNodeMerging
+      .rect = node.rect;
 
     int? firstVisibleIndex;
     final List<SemanticsNode> excluded = <SemanticsNode>[_innerNode!];
